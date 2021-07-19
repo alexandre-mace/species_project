@@ -7,30 +7,32 @@ use App\Entity\Survey;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
-class ResultsController extends AbstractController
+class DashboardController extends AbstractController
 {
-    #[Route('/results/{uniqId}', name: 'results')]
+    #[Route('/dashboard', name: 'dashboard')]
     public function index(
-        $uniqId,
         EntityManagerInterface $entityManager,
-        ChartBuilderInterface $chartBuilder,
-        SpeciesResultCalculator $speciesResultCalculator
+        SpeciesResultCalculator $speciesResultCalculator,
+        ChartBuilderInterface $chartBuilder
     ): Response
     {
-        $survey = $entityManager->getRepository(Survey::class)->findOneBy(['uniqid' => $uniqId]);
-        if ($survey === null) {
-            throw new NotFoundHttpException();
+        $surveys = $entityManager->getRepository(Survey::class)->findAll();
+
+        $averageResults = [];
+        foreach ($surveys as $survey) {
+            $results = $speciesResultCalculator->calculateResults($survey);
+            foreach ($results as $key => $resultAverage) {
+                $averageResults[$key][] = $resultAverage;
+            }
         }
 
-        $survey->setIsOver(true);
-        $entityManager->flush();
-
-        $results = $speciesResultCalculator->calculateResults($survey);
+        foreach ($averageResults as $key => $result) {
+            $averageResults[$key] = round(array_sum($result)/count($result), 2) + 5;
+        }
 
         $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart->setData([
@@ -72,8 +74,9 @@ class ResultsController extends AbstractController
             ],
         ]);
 
-        return $this->render('results/index.html.twig', [
+        return $this->render('dashboard/index.html.twig', [
             'chart' => $chart,
+            'total' => count($surveys)
         ]);
     }
 }

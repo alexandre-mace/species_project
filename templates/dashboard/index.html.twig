@@ -2,9 +2,13 @@
 
 {% block body %}
     <div>
-        <a href="{{ path('dashboard') }}">General average</a>
+        <a href="{{ path('home') }}">Home</a>
 
-        <h1>Results</h1>
+        <h1>General average</h1>
+
+        <p>This chart is a compilation of all sent data.</p>
+
+        <p>The project currently has <b>{{ total }}</b> answers.</p>
 
         {{ render_chart(chart) }}
 
