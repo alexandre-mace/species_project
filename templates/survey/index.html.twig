@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div>
+        <h1>Welcome to the quizz</h1>
+        <p>Question <b>{{ questionNumber }}</b></p>
+
+        <div class="d-flex justify-content-between w-100">
+            <h2>{{ speciesA }}</h2>
+            <h2>{{ speciesB }}</h2>
+        </div>
+        {{ form(form) }}
+    </div>
+{% endblock %}

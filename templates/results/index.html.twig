@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h1>Results</h1>
+
+        {{ render_chart(chart) }}
+
+        <div class="d-flex mt-5">
+            <a class="text-center m-auto btn" href="{{ path('home') }}">Back to home</a>
+        </div>
+    </div>
+{% endblock %}

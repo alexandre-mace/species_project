@@ -1,0 +1,46 @@
+body {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+.btn {
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.mt-3 {
+    margin-top: 1.5rem;
+}
+.mt-5 {
+    margin-top: 3rem;
+}
+.d-block {
+    display: block;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-flex {
+    display: flex;
+}
+.m-auto {
+    margin: auto;
+}
+.text-center {
+    text-align: center;
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+.w-100 {
+    width: 100%;
+}
