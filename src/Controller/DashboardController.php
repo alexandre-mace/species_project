@@ -31,12 +31,12 @@ class DashboardController extends AbstractController
         }
 
         foreach ($averageResults as $key => $result) {
-            $averageResults[$key] = round(array_sum($result)/count($result), 2) + 5;
+            $averageResults[$key] = round(array_sum($result)/count($result), 2);
         }
 
         $chart = $chartBuilder->createChart(Chart::TYPE_BAR);
         $chart->setData([
-            'labels' => array_keys($results),
+            'labels' => array_keys($averageResults),
             'datasets' => [
                 [
                     'label' => 'Species rate',
@@ -61,7 +61,7 @@ class DashboardController extends AbstractController
                         'rgba(255, 180, 0, 1)',
                     ],
                     'borderWidth' => 1,
-                    'data' => array_values($results),
+                    'data' => array_values($averageResults),
                 ],
             ],
         ]);
