@@ -17,6 +17,11 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <a href="{{ path('home') }}" class="mr-3">Home</a>
+        <a href="{{ path('dashboard') }}">General average</a>
+
+        <div class="{% block content_wrapper %}content-wrapper{% endblock %}">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

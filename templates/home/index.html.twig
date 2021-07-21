@@ -3,13 +3,11 @@
 {% block body %}
 
 <div>
-    <a href="{{ path('dashboard') }}">General average</a>
+    <h1 class="main-title">Welcome to the species project</h1>
 
-    <h1>Welcome to the species project</h1>
+    <p class="main-sub-title">This project is here to get a global picture of <em>species's place through a human point of view</em>.</p>
 
-    <p>This project is here to get a global picture of <em>species's place through a human point of view</em>.</p>
-
-    <p>The project currently has <b>{{ total }}</b> answers.</p>
+    <p class="main-sub-title">The project currently has <b>{{ total }}</b> answers.</p>
 
     <div class="d-flex mt-5">
         <a class="text-center m-auto btn" href="{{ path('survey') }}">Begin the test</a>

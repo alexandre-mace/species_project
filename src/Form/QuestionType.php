@@ -37,7 +37,7 @@ class QuestionType extends AbstractType
             ])
             ->add('Valider', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn mt-3 d-flex mx-auto'
+                    'class' => 'btn mt-3 d-flex mx-auto fs-1-2'
                 ]
             ])
         ;
