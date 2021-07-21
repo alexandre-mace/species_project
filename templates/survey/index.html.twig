@@ -3,11 +3,11 @@
 {% block body %}
 
     <div>
-        <p class="text-center main-sub-title question">Question <b style="font-size: 2rem">{{ questionNumber }}</b></p>
+        <p class="text-center main-sub-title question">Question <b  class="bold" style="font-size: 2rem">{{ questionNumber }}</b></p>
 
         <div class="d-flex justify-content-between w-100">
-            <h2>{{ speciesA }}</h2>
-            <h2>{{ speciesB }}</h2>
+            <h2 class="bold">{{ speciesA }}</h2>
+            <h2 class="bold">{{ speciesB }}</h2>
         </div>
         {{ form(form) }}
     </div>

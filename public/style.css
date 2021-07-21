@@ -288,7 +288,8 @@ a {
 h1 {
     font-family: 'GeneralSans-Bold';
 }
-.question {
+.bold {
+    font-family: 'GeneralSans-Bold';
 }
 .main-sub-title {
     font-size: 20px;
